@@ -23,15 +23,15 @@ while True:
 ```
 ```
  
-CLIENT: 
- 
-import socket 
-s=socket.socket() 
-s.connect(('localhost',8000)) 
-while True: 
-    msg=input("Client > ") 
-    s.send(msg.encode()) 
-    print("Server > ",s.recv(1024).decode()) 
+server: 
+import socket
+s=socket.socket()
+s.bind(('localhost',8000))
+s.listen(5)
+c,addr=s.accept()
+while True:
+    ClientMessage=c.recv(1024).decode()
+    c.send(ClientMessage.encode())
 ```
 ## OUPUT
 ![Screenshot 2025-04-26 133332](https://github.com/user-attachments/assets/7ce2a7c6-cca4-441f-8e2a-5694f1f71db6)
